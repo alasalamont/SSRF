@@ -24,7 +24,9 @@ def custom_url_encode(data, times=1):
 def main():
     # User inputs
     internal_domain_ip = input("Provide `internal-domain:port`, do not specify protocol (Ex: localhost:80):\n")
+    print("\n")
     endpoint = input("Provide `endpoint` that request will be sent to (Ex: /api/admin/create):\n")
+    print("\n")
     data_sent = input("Provide `sent-data` (Ex:username=hehe&password=hehe):\n")
 
     # Extract domain/IP without port for the Host header
