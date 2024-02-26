@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+
 def custom_url_encode(data, times=1):
     # Encode specified characters
     def encode_special_chars(s):
