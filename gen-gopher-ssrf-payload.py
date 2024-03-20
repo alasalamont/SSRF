@@ -1,17 +1,15 @@
-#!/usr/bin/python3
-
-#Note
-#This file will give the option for user to choose. It will call 4 files as follow:
-#1. option-1-gopher-get.py
-#2. option-2-gopher-post-url.py
-#3. option-3-gopher-post-json
-#4. option-4-gopher-post-basic`
-#→ Need to put the above 4 files together with this file
-
-from colorama import Fore, Back, Style, init
-init(autoreset=True)  # Auto reset color for each print
 import os
 import subprocess
+
+def main_menu():
+    print("""
+- Option 1. gopher-get: access to a specific endpoint/file
+- Option 2. gopher-post-url: send data to a specific endpoint/file via URL
+- Option 3. gopher-post-json: send data to a specific endpoint/file, the data-sent is in json format
+- Option 4. gopher-post-normal: send data to a specific endpoint/file, the data-sent is in www-form-urlencoded format
+
++ Please choose your option:
+""")
 
 def run_script(option):
     # Map the option numbers to their corresponding script filenames
@@ -22,15 +20,7 @@ def run_script(option):
         4: "option-4-gopher-post-basic.py",
     }
     script_name = scripts.get(option)
-    script_path = f"./{script_name}"
-    if os.path.exists(script_path):
-        subprocess.run(["python3", script_path], check=True)
-    else:
-        print(f"Error: The script for option {option} does not exist.")
-
-
-def run_script(option):
-    script_path = f"./option{option}.py"
+    script_path = f"/mnt/data/{script_name}"
     if os.path.exists(script_path):
         subprocess.run(["python3", script_path], check=True)
     else:
@@ -39,11 +29,10 @@ def run_script(option):
 if __name__ == "__main__":
     main_menu()
     try:
-        choice = int(input(f"{Style.BRIGHT}→ Your choice (1-4): "))
+        choice = int(input("Your choice (1-4): "))
         if choice in range(1, 5):
             run_script(choice)
         else:
             print("Invalid option. Please choose a number between 1 and 4.")
     except ValueError:
         print("Please enter a numeric value.")
-
