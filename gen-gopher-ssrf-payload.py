@@ -32,7 +32,7 @@ def run_script(option):
         4: "option-4-gopher-post-basic.py",
     }
     script_name = scripts.get(option)
-    script_path = f"./{script_name}"
+    script_path = f"/opt/ssrf/{script_name}"
     if os.path.exists(script_path):
         subprocess.run(["python3", script_path], check=True)
     else:
