@@ -37,7 +37,6 @@ http://[::1]:80/
 http://[::ffff:127.0.0.1]:80/
 http://127.0.0.1:00080/
 http://127.0.0.1%00/
-http://127.0.0.1:80/path
 http://127.0.0.1/admin
 http://127.0.0.1:80/admin
 http://127.0.0.1@evil.com/
@@ -59,7 +58,8 @@ http://127.1:80/
 http://127.0.1:80/
 http://127.000000000000000.1:80/
 http://127.0.0.1%2e/
-
+#
+#
 #=== SECTION B: No `http://`+ plain-text ===
 127.0.0.1
 127.0.0.1:80
@@ -86,7 +86,6 @@ ip6-localhost
 loopback
 127.0.0.1/admin
 127.0.0.1:80/admin
-127.0.0.1:80/path
 [::1]:80
 [::ffff:127.0.0.1]:80
 127.0.0.1@evil.com
@@ -94,8 +93,9 @@ user:pass@127.0.0.1
 127-0-0-1
 0x7f000001:80
 2130706433:80
-
-#=== SECTION C: Starts with `http://` + URL encoded ===
+#
+#
+#=== SECTION C: Starts with `http://` + URL encoded (brackets, percent, dot/null) ===
 http://%5B::1%5D/
 http://%5B::1%5D:80/
 http://%5B::ffff:127.0.0.1%5D/
@@ -117,7 +117,15 @@ http://%5B::ffff:127.0.0.1%5D/api
 http://%5B::ffff:127.0.0.1%5D:8080/
 http://%5B::1%5D:8080/admin
 http://127.0.0.1%2e/
-
+http://127%2E0%2E0%2E1/
+http://127%2E0%2E0%2E1:80/
+http://127%252E0%252E0%252E1/
+http://2130706433%2F
+127%2E0%2E0%2E1
+127%252E0%252E0%252E1
+http://%5B127%2E0%2E0%2E1%5D/
+#
+#
 #=== SECTION D: Starts with `http://` + double URL encoded ===
 http://%255B::1%255D/
 http://%255B::1%255D:80/
@@ -140,3 +148,4 @@ http://%255B::ffff:127.0.0.1%255D/api
 http://%255B::ffff:127.0.0.1%255D:8080/
 http://%255B::1%255D:8080/admin
 http://127.0.0.1%252e/
+http://127%252E0%252E0%252E1/
